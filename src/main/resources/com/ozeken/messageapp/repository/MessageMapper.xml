@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ozeken.messageapp.repository.MessageMapper">
+<!-- 全件取得 -->
+<select id="selectAll" resultType="com.ozeken.messageapp.entity.Message">
+  SELECT
+    message_id AS messageId,
+    content,
+    created_at AS createdAt,
+    updated_at AS updatedAt
+  FROM messages
+</select>
+
+<!-- 一件取得 -->
+<select id="selectById" parameterType="long" resultType="com.ozeken.messageapp.entity.Message">
+  SELECT
+    message_id AS messageId,
+    content,
+    created_at AS createdAt,
+    updated_at AS updatedAt
+  FROM messages
+  WHERE message_id = #{messageId}
+</select>
+
+<!-- 新規登録 -->
+<insert id="insert" parameterType="com.ozeken.messageapp.entity.Message"
+        useGeneratedKeys="true" keyProperty="messageId">
+  INSERT INTO messages (content, created_at, updated_at)
+  VALUES (#{content}, #{createdAt}, #{updatedAt})
+</insert>
+
+<!-- 更新 -->
+<update id="update" parameterType="com.ozeken.messageapp.entity.Message">
+  UPDATE messages
+  SET
+    content = #{content},
+    updated_at = #{updatedAt}
+ WHERE message_id = #{messageId}
+</update>
+
+<!-- 削除 -->
+<delete id="delete" parameterType="long">
+  DELETE FROM messages
+  WHERE message_id = #{messageId}
+</delete>
+
+</mapper>
