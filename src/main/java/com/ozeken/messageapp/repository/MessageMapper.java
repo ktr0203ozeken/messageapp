@@ -6,6 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ozeken.messageapp.entity.Message;
 
+/**
+ * メッセージリポジトリ
+ */
+
 @Mapper
 public interface MessageMapper {
 	
