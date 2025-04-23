@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>メッセージ一覧</title>
+</head>
+<body>
+    <h2>メッセージ一覧</h2>
+
+    <!-- メッセージがない場合 -->
+    <p th:if="${emptymessage}" th:text="${emptymessage}" style="color: gray;"></p>
+
+    <!-- メッセージがある場合 -->
+    <table border="1" th:if="${messages}">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>内容</th>
+                <th>作成日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="message : ${messages}">
+                <td th:text="${message.messageId}">1</td>
+                <td th:text="${message.content}">内容</td>
+                <td th:text="${#dates.format(message.createdAt, 'yyyy/MM/dd HH:mm')}">yyyy/MM/dd HH:mm</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
