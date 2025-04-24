@@ -1,0 +1,13 @@
+/*  エラーメッセージを画面下部に固定 */
+	  
+	  .error-fixed {
+	      position: fixed;
+	      bottom: 0;
+	      left: 0;
+	      width: 100%;
+	      background-color: #ffe0e0;
+	      color: red;
+	      padding: 10px;
+	      font-weight: solid;
+	      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+	  }
