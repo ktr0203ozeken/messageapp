@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新規メッセージ</title>
+	<!--リセットcss-->
+	<link rel="stylesheet" href="/css/ress.min.css">
+	<!--フォームのcss-->
+	<link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <h2>新規メッセージ</h2>
+
+    <!-- メッセージフォーム -->
+    <form th:action="@{/messages/save}" th:object="${messageForm}" method="post">
+
+        <label for="content">メッセージ内容:</label>
+		<textarea id="content" th:field="*{content}" placeholder="メッセージを入力"></textarea>
+		<!-- バリデーションエラー表示 -->
+		<div th:if="${#fields.hasErrors('content')}" class="error-fixed">
+			<p th:errors="*{content}">メッセージエラー</p>
+		</div>
+
+        <br><br>
+        <button type="submit">送信</button>
+    </form>
+
+    <br>
+    <a th:href="@{/messages}">一覧に戻る</a>
+</body>
+</html>
